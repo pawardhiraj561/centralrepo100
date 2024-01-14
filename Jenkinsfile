@@ -4,25 +4,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/spdevops95/new-demojob2.git'
+               echo
             }
         }
 
         stage('Build') {
             steps {
-                sh 'your-build-command-here'
+                echo
             }
         }
 
         stage('Test') {
             steps {
-                sh 'your-test-command-here'
+                echo
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'your-deployment-command-here'
+                echo
             }
         }
     }
