@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    environment {
+        MAVEN_HOME = tool 'Maven'
+        PATH = "$MAVEN_HOME/bin:$PATH"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/pawardhiraj561/centralrepo100.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    // Your build command here
+                    sh "${MAVEN_HOME}/bin/mvn clean install"
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    // Your test command here
+                    sh "${MAVEN_HOME}/bin/mvn test"
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    // Your deployment command here
+                    sh 'deploy-script.sh'  // Replace with your actual deployment command
+                }
+            }
+        }
+    }
+}
